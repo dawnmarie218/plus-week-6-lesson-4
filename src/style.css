@@ -58,7 +58,7 @@ body {
   background: linear-gradient(#5884d1, #005689, #111d5e);
 }
 
-.formsize1 {
+.form-container-1 {
   font-size: 14px;
   margin-top: 20px;
   margin-left: 15px;
@@ -155,8 +155,8 @@ h2 {
 
 h3 {
   text-align: center;
-  margin-top: -45px;
-  font-size: 15px;
+  margin-top: -55px;
+  font-size: 13px;
 }
 
 #row1 {
@@ -180,6 +180,7 @@ h3 {
 #row1b {
   font-size: 11px;
   margin-left: 10px;
+  margin-bottom: -10px;
 }
 
 #mainTempArea {
@@ -193,8 +194,8 @@ h3 {
   margin-left: -10px;
 }
 
-.degreeUnit {
-  font-size: 12px;
+.degreeUnits {
+  font-size: 11px;
   margin-left: -7px;
   padding-bottom: 2px;
   text-align: center;
@@ -206,10 +207,15 @@ h3 {
 #kmh {
   text-decoration: none;
 }
+
 #feelsLike {
   margin-top: -30px;
   margin-left: 25px;
   font-size: 12px;
+}
+
+#temp-description:first-letter {
+  text-transform: capitalize;
 }
 
 #mainDetails,
@@ -281,6 +287,7 @@ h3 {
   padding-right: 0;
   padding-top: 7px;
   display: block;
+  height: 85px;
 }
 
 .day1 {
@@ -297,6 +304,7 @@ h3 {
   background-color: #fd06ae;
   border-radius: 14px;
   color: #fff;
+  height: 85px;
 }
 
 .day4 {

@@ -1,10 +1,14 @@
 let now = new Date();
+
 let minutes = now.getMinutes();
 if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 let hours = now.getHours();
 let background = document.querySelector(".background");
+if (hours < 10) {
+  hours = `0${hours}`;
+}
 if (hours > 10 && hours <= 17) {
   background.classList.add("dayBackground");
 }
@@ -60,6 +64,8 @@ dayTime.innerHTML = `${day}, ${hours}:${minutes}`;
 
 let currentDate = document.querySelector("#date");
 currentDate.innerHTML = `${date}-${month}-${year}`;
+let mainIcon = document.querySelector("#mainIcon");
+let outlookIcons = document.querySelector("#weatherIcons");
 
 function showWeather(response) {
   document.querySelector("#current-city").innerHTML = response.data.name;
@@ -67,6 +73,12 @@ function showWeather(response) {
     response.data.sys.country;
   document.querySelector("#currentTemp").innerHTML = Math.round(
     response.data.main.temp
+  );
+  document.querySelector("#todayHigh").innerHTML = Math.round(
+    response.data.main.temp_max
+  );
+  document.querySelector("#todayLow").innerHTML = Math.round(
+    response.data.main.temp_min
   );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
