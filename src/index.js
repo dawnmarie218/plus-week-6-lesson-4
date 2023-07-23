@@ -64,37 +64,42 @@ dayTime.innerHTML = `${day}, ${hours}:${minutes}`;
 
 let currentDate = document.querySelector("#date");
 currentDate.innerHTML = `${date}-${month}-${year}`;
-let mainIcon = document.querySelector("#mainIcon");
-let outlookIcons = document.querySelector("#weatherIcons");
 
 function showWeather(response) {
-  document.querySelector("#current-city").innerHTML = response.data.name;
+  document.querySelector("#current-city").innerHTML = response.data.city;
   document.querySelector("#state-province-country").innerHTML =
-    response.data.sys.country;
+    response.data.country;
   document.querySelector("#currentTemp").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
-  document.querySelector("#todayHigh").innerHTML = Math.round(
-    response.data.main.temp_max
-  );
-  document.querySelector("#todayLow").innerHTML = Math.round(
-    response.data.main.temp_min
-  );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  //document.querySelector("#todayHigh").innerHTML = Math.round(
+  // response.data.main.temp_max
+  //);
+  // document.querySelector("#todayLow").innerHTML = Math.round(
+  //  response.data.main.temp_min
+  //);
+  document.querySelector("#humidity").innerHTML =
+    response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#temp-description").innerHTML =
-    response.data.weather[0].description;
+    response.data.condition.description;
   document.querySelector("#feels-like").innerHTML = Math.round(
-    response.data.main.feels_like
+    response.data.temperature.feels_like
   );
+
+  let weatherIcons = document.querySelector("#weatherIcons");
+  weatherIcons.setAttribute =
+    ("src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/{${response.data.condition.icon}.png`);
+  weatherIcons.setAttribute = ("alt", response.data.condition.description);
 }
 function search(event) {
   event.preventDefault();
-  let apiKey = "cd173a006b0e51dac58c6d8064c94178";
+  let apiKey = "bb54b4f03074ab37dt8f0290273o110b";
   let city = document.querySelector("#search-1").value;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showWeather);
 }
 
@@ -102,9 +107,8 @@ let searchForm = document.querySelector("#form1");
 searchForm.addEventListener("submit", search);
 
 function searchLocation(position) {
-  let apiKey = "cd173a006b0e51dac58c6d8064c94178";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}$units=imperial`;
-  console.log(apiUrl);
+  let apiKey = "bb54b4f03074ab37dt8f0290273o110b";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lat=${position.coords.latitude}&lon=${position.coords.longitude}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showWeather);
 }
 
