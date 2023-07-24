@@ -66,12 +66,15 @@ let currentDate = document.querySelector("#date");
 currentDate.innerHTML = `${date}-${month}-${year}`;
 
 function showWeather(response) {
+  fahrenheit = response.data.temperature.current;
+  fahrenheitFeelsLike = response.data.temperature.feels_like;
+  windMPH = response.data.wind.speed;
+
   document.querySelector("#current-city").innerHTML = response.data.city;
   document.querySelector("#state-province-country").innerHTML =
     response.data.country;
-  document.querySelector("#currentTemp").innerHTML = Math.round(
-    response.data.temperature.current
-  );
+
+  document.querySelector("#currentTemp").innerHTML = Math.round(fahrenheit);
   //document.querySelector("#todayHigh").innerHTML = Math.round(
   // response.data.main.temp_max
   //);
@@ -80,20 +83,18 @@ function showWeather(response) {
   //);
   document.querySelector("#humidity").innerHTML =
     response.data.temperature.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
-  );
+  document.querySelector("#wind").innerHTML = Math.round(windMPH);
   document.querySelector("#temp-description").innerHTML =
     response.data.condition.description;
-  document.querySelector("#feels-like").innerHTML = Math.round(
-    response.data.temperature.feels_like
-  );
+  document.querySelector("#feels-like").innerHTML =
+    Math.round(fahrenheitFeelsLike);
 
   let weatherIcons = document.querySelector("#weatherIcons");
-  weatherIcons.setAttribute =
-    ("src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/{${response.data.condition.icon}.png`);
-  weatherIcons.setAttribute = ("alt", response.data.condition.description);
+  weatherIcons.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
+  weatherIcons.setAttribute("alt", response.data.condition.description);
 }
 function search(event) {
   event.preventDefault();
@@ -119,15 +120,34 @@ function getCurrentLoc(event) {
 let currentLoc = document.querySelector("#currentLocIcon");
 currentLoc.addEventListener("click", getCurrentLoc);
 
-function toFahrenheit(event) {
-  event.preventDefault();
-  let temp = document.querySelector("#currentTemp");
-  temp.innerHTML = "80";
-}
 function toCelsius(event) {
   event.preventDefault();
   let temp = document.querySelector("#currentTemp");
-  temp.innerHTML = "27";
+  linkF.classList.remove("active");
+  linkC.classList.add("active");
+  let celsius = ((fahrenheit - 32) * 5) / 9;
+  temp.innerHTML = Math.round(celsius);
+
+  let feelsLiketemp = document.querySelector("#feels-like");
+  let celsiusFeelsLike = ((fahrenheitFeelsLike - 32) * 5) / 9;
+  feelsLiketemp.innerHTML = Math.round(celsiusFeelsLike);
+
+  let windSpeed = document.querySelector("#wind");
+  let windKMH = windMPH * 1.609;
+  windSpeed.innerHTML = Math.round(windKMH);
+}
+function toFahrenheit(event) {
+  event.preventDefault();
+  linkF.classList.add("active");
+  linkC.classList.remove("active");
+  let temp = document.querySelector("#currentTemp");
+  temp.innerHTML = Math.round(fahrenheit);
+
+  let feelsLiketemp = document.querySelector("#feels-like");
+  feelsLiketemp.innerHTML = Math.round(fahrenheitFeelsLike);
+
+  let windSpeed = document.querySelector("#wind");
+  windSpeed.innerHTML = Math.round(windMPH) + "mph";
 }
 let linkF = document.querySelector("#fahrenheit");
 linkF.addEventListener("click", toFahrenheit);
@@ -135,21 +155,23 @@ linkF.addEventListener("click", toFahrenheit);
 let linkC = document.querySelector("#celsius");
 linkC.addEventListener("click", toCelsius);
 
-function toMPH(event) {
-  event.preventDefault();
-  let wind = document.querySelector("#wind");
-  wind.innerHTML = "2";
-}
-function toKMH(event) {
-  event.preventDefault();
-  let wind = document.querySelector("#wind");
-  wind.innerHTML = "3";
-}
-let linkMPH = document.querySelector("#mph");
-linkMPH.addEventListener("click", toMPH);
+//function toMPH(event) {
+// event.preventDefault();
+// let wind = document.querySelector("#wind");
+//  wind.innerHTML = "2";
+//}
+//function toKMH(event) {
+//  event.preventDefault();
+//  let wind = document.querySelector("#wind");
+//  wind.innerHTML = "3";
+//}
+//let linkMPH = document.querySelector("#mph");
+//linkMPH.addEventListener("click", toMPH);
 
-let linkKMH = document.querySelector("#kmh");
-linkKMH.addEventListener("click", toKMH);
+//let linkKMH = document.querySelector("#kmh");
+//linkKMH.addEventListener("click", toKMH);
+
+let fahrenheit = null;
 
 function showSurfaceTemp1() {
   tempForm1 = document.getElementById("temp-check-card");

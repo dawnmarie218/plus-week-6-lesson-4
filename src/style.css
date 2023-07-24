@@ -56,6 +56,11 @@ body {
 
 .nightBackground {
   background: linear-gradient(#5884d1, #005689, #111d5e);
+  color: #fff;
+}
+
+.night #temp-description {
+  color: #fff;
 }
 
 .form-container-1 {
@@ -118,6 +123,9 @@ body {
   color: #fff;
 }
 
+#suppInfo a {
+  color: #a903fd;
+}
 .button2 {
   border-radius: 9px;
   padding: 3px 8px;
@@ -145,7 +153,7 @@ body {
 
 h1 {
   font-size: 17px;
-  line-height: 0.5;
+  line-height: 0.8;
 }
 
 h2 {
@@ -164,11 +172,12 @@ h3 {
   margin-left: 20px;
 }
 #mainIcon {
-  margin-left: -10px;
-  margin-top: -10px;
+  margin-left: -30px;
+  margin-top: -25px;
   font-size: 55px;
   color: #fff;
   padding-left: 10px;
+  width: 50px;
 }
 
 #row1a {
@@ -186,9 +195,10 @@ h3 {
 
 #mainTempArea {
   font-size: 26px;
-  margin-left: 45px;
+  margin-left: 65px;
   line-height: 1;
   text-align: center;
+  margin-top: -10px;
 }
 
 #currentTemp {
@@ -202,6 +212,15 @@ h3 {
   text-align: center;
 }
 
+.degreeUnits .active {
+  color: #000;
+  cursor: default;
+  background: linear-gradient(#03acfd, #a903fd, #fd06ae, #fcaa02, #abfd0f);
+}
+
+.degreeUnits .active:hover {
+  text-decoration: none;
+}
 #fahrenheit,
 #celsius,
 #mph,
@@ -210,7 +229,7 @@ h3 {
 }
 
 #feelsLike {
-  margin-top: -30px;
+  margin-top: -20px;
   margin-left: 25px;
   font-size: 12px;
 }
@@ -276,7 +295,7 @@ h3 {
 
 .outlookTemps {
   font-size: 12px;
-  text-align: bottom;
+  text-align: center bottom;
 }
 
 .day1,
