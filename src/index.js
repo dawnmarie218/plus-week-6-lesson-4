@@ -65,14 +65,36 @@ dayTime.innerHTML = `${day}, ${hours}:${minutes}`;
 let currentDate = document.querySelector("#date");
 currentDate.innerHTML = `${date}-${month}-${year}`;
 
+function showStateProvince(response) {
+  document.querySelector("#state-province").innerHTML =
+    response.data.features[0].properties.state;
+}
+
+function getStateProvince(coordinates) {
+  let apiKey1 = "1e3510962056455dabbb1f31abb7e7dd";
+  let apiUrl1 = `https://api.geoapify.com/v1/geocode/reverse?lat=${coordinates.latitude}&lon=${coordinates.longitude}&apiKey=${apiKey1}`;
+  axios.get(apiUrl1).then(showStateProvince);
+}
+
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecast = document.querySelector("#forecast");
+}
+
+function getForecast(coordinates) {
+  let apiKey = "bb54b4f03074ab37dt8f0290273o110b";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function showWeather(response) {
   fahrenheit = response.data.temperature.current;
   fahrenheitFeelsLike = response.data.temperature.feels_like;
   windMPH = response.data.wind.speed;
 
   document.querySelector("#current-city").innerHTML = response.data.city;
-  document.querySelector("#state-province-country").innerHTML =
-    response.data.country;
+
+  document.querySelector("#country").innerHTML = response.data.country;
 
   document.querySelector("#currentTemp").innerHTML = Math.round(fahrenheit);
   //document.querySelector("#todayHigh").innerHTML = Math.round(
@@ -95,7 +117,13 @@ function showWeather(response) {
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
   weatherIcons.setAttribute("alt", response.data.condition.description);
+
+  getForecast(response.data.coordinates);
+
+  getStateProvince(response.data.coordinates);
 }
+
+
 function search(event) {
   event.preventDefault();
   let apiKey = "bb54b4f03074ab37dt8f0290273o110b";
@@ -134,7 +162,7 @@ function toCelsius(event) {
 
   let windSpeed = document.querySelector("#wind");
   let windKMH = windMPH * 1.609;
-  windSpeed.innerHTML = Math.round(windKMH);
+  windSpeed.innerHTML = Math.round(windKMH) + " km/h";
 }
 function toFahrenheit(event) {
   event.preventDefault();
@@ -147,7 +175,7 @@ function toFahrenheit(event) {
   feelsLiketemp.innerHTML = Math.round(fahrenheitFeelsLike);
 
   let windSpeed = document.querySelector("#wind");
-  windSpeed.innerHTML = Math.round(windMPH) + "mph";
+  windSpeed.innerHTML = Math.round(windMPH) + " mph";
 }
 let linkF = document.querySelector("#fahrenheit");
 linkF.addEventListener("click", toFahrenheit);
@@ -155,23 +183,8 @@ linkF.addEventListener("click", toFahrenheit);
 let linkC = document.querySelector("#celsius");
 linkC.addEventListener("click", toCelsius);
 
-//function toMPH(event) {
-// event.preventDefault();
-// let wind = document.querySelector("#wind");
-//  wind.innerHTML = "2";
-//}
-//function toKMH(event) {
-//  event.preventDefault();
-//  let wind = document.querySelector("#wind");
-//  wind.innerHTML = "3";
-//}
-//let linkMPH = document.querySelector("#mph");
-//linkMPH.addEventListener("click", toMPH);
-
-//let linkKMH = document.querySelector("#kmh");
-//linkKMH.addEventListener("click", toKMH);
-
 let fahrenheit = null;
+let windPMH = null + " mph";
 
 function showSurfaceTemp1() {
   tempForm1 = document.getElementById("temp-check-card");

@@ -152,13 +152,12 @@ body {
 }
 
 h1 {
-  font-size: 17px;
-  line-height: 0.8;
+  font-size: 15px;
+  line-height: 0.3;
 }
 
 h2 {
   font-size: 11px;
-  line-height: 0.5;
 }
 
 h3 {
@@ -226,10 +225,11 @@ h3 {
 #mph,
 #kmh {
   text-decoration: none;
+  color: #000;
 }
 
 #feelsLike {
-  margin-top: -20px;
+  margin-top: -40px;
   margin-left: 25px;
   font-size: 12px;
 }
@@ -238,9 +238,17 @@ h3 {
   text-transform: capitalize;
 }
 
-#mainDetails,
-#suppInfo {
+#mainDetails {
   margin-left: 10px;
+}
+#current-city,
+#state-province,
+#country {
+  line-height: 0.4;
+}
+
+#day-time {
+  margin-top: -10px;
 }
 
 #mainDesc {
@@ -251,8 +259,12 @@ h3 {
 }
 
 #suppInfo {
+  margin-left: -20px;
   margin-top: 10px;
-  margin-left: 20px;
+}
+
+#humidity #wind {
+  padding: 0;
 }
 
 #row2 {

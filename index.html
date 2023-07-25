@@ -88,7 +88,8 @@
 
           <div class="col-3" id="mainDetails">
             <h1 id="current-city" class="searched-city">⬆️enter city or</h1>
-            <h2 id="state-province-country">select map icon ⬆️</h2>
+            <h2 id="state-province">select map icon ⬆️</h2>
+            <h2 id="country">-----</h2>
             <h2 id="date">--</h2>
             <h2 id="day-time"></h2>
           </div>
@@ -98,11 +99,14 @@
             <div class="row d-flex align-items-center no-gutters bd-highlight">
               <div class="row" style="height: 7em" id="row2">
                 <div class="col-4 border day1">
-                  <strong>M</strong>
+                  <span class="forecast-day"><strong>M</strong></span>
                   <br />
                   <i class="fa-solid fa-cloud-sun weatherIcons"></i>
                   <br />
-                  <div class="outlookTemps"><strong>91</strong> / 78</div>
+                  <div class="outlookTemps">
+                    <span class="forecast-high"><strong>91</strong></span
+                    >/ <span class="forecast-low">78</span>
+                  </div>
                 </div>
                 <div class="col-4 border day2">
                   <strong>T</strong>
@@ -167,8 +171,11 @@
             <br />
             <h2>
               <strong>High </strong>/ Low:
-              <span id="todayHigh"><strong>--</strong></span> /
-              <span id="todayLow">--</span>
+              <span id="todayHigh" class="forecast-high"
+                ><strong>--</strong></span
+              >
+              /
+              <span id="todayLow" class="forecast-low">--</span>
             </h2>
             <div class="card-body"></div>
           </div>
