@@ -1,3 +1,7 @@
+function showTooltip() {
+  $('[data-toggle="tooltip"]').tooltip();
+}
+
 let now = new Date();
 
 let minutes = now.getMinutes();
@@ -123,7 +127,6 @@ function showWeather(response) {
   getStateProvince(response.data.coordinates);
 }
 
-
 function search(event) {
   event.preventDefault();
   let apiKey = "bb54b4f03074ab37dt8f0290273o110b";
@@ -186,6 +189,38 @@ linkC.addEventListener("click", toCelsius);
 let fahrenheit = null;
 let windPMH = null + " mph";
 
+//
+function dogScore() {
+  dogSize = Number(dogSize.value);
+  checkbox1 = Number(checkbox1.checked);
+  checkbox2 = Number(checkbox2.checked);
+  checkbox3 = Number(checkbox3.checked);
+  checkbox4 = Number(checkbox4.checked);
+  checkbox5 = Number(checkbox5.checked);
+  score = dogSize + checkbox1 + checkbox2 + checkbox3 - checkbox4 - checkbox5;
+  console.log(score);
+}
+let dogSize = document.querySelector("#customRange3");
+dogSize.addEventListener("click", dogScore);
+
+let checkbox1 = document.querySelector("#overweight");
+checkbox1.addEventListener("change", dogScore);
+//console.log(checkbox1.value);
+
+let checkbox2 = document.querySelector("#flat");
+checkbox2.addEventListener("change", dogScore);
+//console.log(checkbox2.value);
+
+let checkbox3 = document.querySelector("#age");
+checkbox3.addEventListener("change", dogScore);
+
+let checkbox4 = document.querySelector("#shade");
+checkbox4.addEventListener("change", dogScore);
+
+let checkbox5 = document.querySelector("#water");
+checkbox5.addEventListener("change", dogScore);
+
+//
 function showSurfaceTemp1() {
   tempForm1 = document.getElementById("temp-check-card");
   displaySetting = tempForm1.style.display;
@@ -196,8 +231,4 @@ function showSurfaceTemp1() {
   } else {
     tempForm1.style.display = "block";
   }
-}
-
-function showTooltip() {
-  $('[data-toggle="tooltip"]').tooltip();
 }
