@@ -74,6 +74,54 @@ function showStateProvince(response) {
     response.data.features[0].properties.state;
 }
 
+//let forecastDate = new Date(timestamp * 1000);
+//let forecastDay = date.getDay();
+//let forecastDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+function showHourlyForecast() {
+  let hourlyForecast = document.querySelector("#hourly-forecast");
+
+  let hourlyForecastHTML = `<div class="row">`;
+  let hourlyForecastHours = [
+    "1:00",
+    "2:00",
+    "3:00",
+    "4:00",
+    "5:00",
+    "6:00",
+    "7:00",
+    "8:00",
+    "9:00",
+    "10:00",
+    "11:00",
+    "12:00",
+  ];
+
+  hourlyForecastHours.forEach(function (hourlyForecastHour) {
+    hourlyForecastHTML =
+      hourlyForecastHTML +
+      `<div class="col-1 border hour1">
+<h4>${hourlyForecastHour} <br />AM</h4>
+<br />
+<div class="summerYellowSquare left-end-square">
+<i
+class="fa-solid fa-square squares"
+style="color: yellow"
+></i>
+<div class="summer-yellow-square-text left-end-square-text">
+ Potential unsafe conditions depending on breed and length of
+time outdoors.
+</div>`;
+    hourlyForecastHTML = hourlyForecastHTML + `</div>`;
+    hourlyForecast.innerHTML = hourlyForecastHTML;
+    console.log(hourlyForecastHTML);
+  });
+}
+
+function showStateProvince(response) {
+  document.querySelector("#state-province").innerHTML =
+    response.data.features[0].properties.state;
+}
 function getStateProvince(coordinates) {
   let apiKey1 = "1e3510962056455dabbb1f31abb7e7dd";
   let apiUrl1 = `https://api.geoapify.com/v1/geocode/reverse?lat=${coordinates.latitude}&lon=${coordinates.longitude}&apiKey=${apiKey1}`;
@@ -191,13 +239,19 @@ let windPMH = null + " mph";
 
 //
 function dogScore() {
-  dogSize = Number(dogSize.value);
-  checkbox1 = Number(checkbox1.checked);
-  checkbox2 = Number(checkbox2.checked);
-  checkbox3 = Number(checkbox3.checked);
-  checkbox4 = Number(checkbox4.checked);
-  checkbox5 = Number(checkbox5.checked);
-  score = dogSize + checkbox1 + checkbox2 + checkbox3 - checkbox4 - checkbox5;
+  dogSizeAlt = Number(dogSize.value);
+  checkbox1Alt = Number(checkbox1.checked);
+  checkbox2Alt = Number(checkbox2.checked);
+  checkbox3Alt = Number(checkbox3.checked);
+  checkbox4Alt = Number(checkbox4.checked);
+  checkbox5Alt = Number(checkbox5.checked);
+  score =
+    dogSizeAlt +
+    checkbox1Alt +
+    checkbox2Alt +
+    checkbox3Alt -
+    checkbox4Alt -
+    checkbox5Alt;
   console.log(score);
 }
 let dogSize = document.querySelector("#customRange3");

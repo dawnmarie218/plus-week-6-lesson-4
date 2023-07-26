@@ -356,7 +356,7 @@ h3 {
   font-size: 40px;
   line-height: 0.75;
   text-align: center;
-  margin-left: 18px;
+  margin-left: 21px;
   padding: 0;
   background: linear-gradient(#03acfd, #a903fd, #fd06ae, #fcaa02, #abfd0f);
   border-radius: 4px;
@@ -488,6 +488,7 @@ h4 {
 .right-end-square {
   font-size: 40px;
   margin-top: -15px;
+  text-align: center;
 }
 .summer-red-square-text,
 .summer-orange-square-text,
@@ -535,9 +536,10 @@ h4 {
 .hour7,
 .hour8 {
   width: 70px;
+  margin-left: 10px;
 }
 
-.hourly {
+.hourly-second-half {
   margin-top: -25px;
 }
 
