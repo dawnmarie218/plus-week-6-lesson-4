@@ -81,8 +81,8 @@ function showStateProvince(response) {
 function showHourlyForecast() {
   let hourlyForecast = document.querySelector("#hourly-forecast");
 
-  let hourlyForecastHTML = `<div class="row">`;
-  let hourlyForecastHours = [
+  let hourlyForecastHTML = `<div class="row d-flex align-items-center no-gutters bd-highlight" id="dogRow2">`;
+  let hours = [
     "1:00",
     "2:00",
     "3:00",
@@ -97,12 +97,11 @@ function showHourlyForecast() {
     "12:00",
   ];
 
-  hourlyForecastHours.forEach(function (hourlyForecastHour) {
+  hours.forEach(function (hour) {
     hourlyForecastHTML =
       hourlyForecastHTML +
       `<div class="col-1 border hour1">
-<h4>${hourlyForecastHour} <br />AM</h4>
-<br />
+<h4>8:00<br /> AM</h4>
 <div class="summerYellowSquare left-end-square">
 <i
 class="fa-solid fa-square squares"
@@ -111,7 +110,12 @@ style="color: yellow"
 <div class="summer-yellow-square-text left-end-square-text">
  Potential unsafe conditions depending on breed and length of
 time outdoors.
+</div>
+</div>
+<br />
+<h4>80°</h4>
 </div>`;
+
     hourlyForecastHTML = hourlyForecastHTML + `</div>`;
     hourlyForecast.innerHTML = hourlyForecastHTML;
     console.log(hourlyForecastHTML);
