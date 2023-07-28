@@ -76,49 +76,39 @@ function showStateProvince(response) {
 //let forecastDay = date.getDay();
 //let forecastDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-function showHourlyForecast() {
-  let hourlyForecast = document.querySelector("#hourly-forecast");
+//copied from Slack message below
+function displayForecast() {
+  let hourlyForecast = ["6:00", "9:00", "12:00", "15:00", "18:00", "21:00"];
+  let forecastElement = document.querySelector("#hourly-forecast");
 
-  let hourlyForecastHTML = `<div class="row d-flex align-items-center no-gutters bd-highlight" id="dogRow2">`;
-  let hours = [
-    "1:00",
-    "2:00",
-    "3:00",
-    "4:00",
-    "5:00",
-    "6:00",
-    "7:00",
-    "8:00",
-    "9:00",
-    "10:00",
-    "11:00",
-    "12:00",
-  ];
+  let forecastHTML = `<div class="row">`;
+  hourlyForecast.forEach(function (forecastHour, index) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-1 border hour1">
+        <h4>${forecastHour}</h4>
 
-  hours.forEach(function (hour) {
-    hourlyForecastHTML =
-      hourlyForecastHTML +
-      `<div class="col-1 border hour1">
-<h4>8:00<br /> AM</h4>
-<div class="summerYellowSquare left-end-square">
-<i
-class="fa-solid fa-square squares"
-style="color: yellow"
-></i>
-<div class="summer-yellow-square-text left-end-square-text">
- Potential unsafe conditions depending on breed and length of
-time outdoors.
-</div>
-</div>
-<br />
-<h4>80°</h4>
-</div>`;
-
-    hourlyForecastHTML = hourlyForecastHTML + `</div>`;
-    hourlyForecast.innerHTML = hourlyForecastHTML;
-    console.log(hourlyForecastHTML);
+        <div class="summerYellowSquare left-end-square">
+          <i
+            class="fa-solid fa-square squares"
+            style="color: yellow"
+          ></i>
+          <div class="summer-yellow-square-text left-end-square-text">
+            Potential unsafe conditions depending on breed and length
+            of time outdoors.
+          </div>
+        </div>
+        <br />
+        <h4>80°</h4>
+      </div>
+  `;
   });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
+//End copied from Slack messages
 
 function showStateProvince(response) {
   document.querySelector("#state-province").innerHTML =
@@ -252,12 +242,11 @@ let tempAdj = document.querySelector("#tempAdj");
 tempAdj.innerHTML = round(hourlyHigh);
 
 //function showMatrixValue() {
-  //let dogSizeAlt = Number(dogSize.value);
- // if ((dogSize.value = 1 && tempAdj <= 65)) {
-   // matrixValue = 1;
-  //}
+//let dogSizeAlt = Number(dogSize.value);
+// if ((dogSize.value = 1 && tempAdj <= 65)) {
+// matrixValue = 1;
 //}
-
+//}
 
 //document.querySelector("#matrixValue").innerHTML = matrixValue.value;
 
