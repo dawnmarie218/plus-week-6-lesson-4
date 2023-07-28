@@ -10,9 +10,7 @@ if (minutes < 10) {
 }
 let hours = now.getHours();
 let background = document.querySelector(".background");
-if (hours < 10) {
-  hours = `0${hours}`;
-}
+
 if (hours > 10 && hours <= 17) {
   background.classList.add("dayBackground");
 }
@@ -211,9 +209,9 @@ function toCelsius(event) {
   let celsius = ((fahrenheit - 32) * 5) / 9;
   temp.innerHTML = Math.round(celsius);
 
-  let feelsLiketemp = document.querySelector("#feels-like");
+  let feelsLikeTemp = document.querySelector("#feels-like");
   let celsiusFeelsLike = ((fahrenheitFeelsLike - 32) * 5) / 9;
-  feelsLiketemp.innerHTML = Math.round(celsiusFeelsLike);
+  feelsLikeTemp.innerHTML = Math.round(celsiusFeelsLike);
 
   let windSpeed = document.querySelector("#wind");
   let windKMH = windMPH * 1.609;
@@ -242,6 +240,17 @@ let fahrenheit = null;
 let windPMH = null + " mph";
 
 //
+function round(hourlyHigh) {
+  if (hourlyHigh % 5 == 0) {
+    return Math.floor(hourlyHigh / 5) * 5;
+  } else {
+    return Math.floor(hourlyHigh / 5) * 5 + 5;
+  }
+}
+hourlyHigh = 60;
+let tempAdj = document.querySelector("#tempAdj");
+tempAdj.innerHTML = round(hourlyHigh);
+
 function dogScore() {
   dogSizeAlt = Number(dogSize.value);
   checkbox1Alt = Number(checkbox1.checked);
@@ -258,6 +267,7 @@ function dogScore() {
     checkbox5Alt;
   console.log(score);
 }
+
 let dogSize = document.querySelector("#customRange3");
 dogSize.addEventListener("click", dogScore);
 
