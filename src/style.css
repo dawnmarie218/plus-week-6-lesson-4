@@ -486,6 +486,12 @@ h4 {
 
 #tempAdj {
   font-weight: bold;
+  display: none;
+}
+
+#matrixValue {
+  font-weight: bold;
+  display: none;
 }
 
 .squares,

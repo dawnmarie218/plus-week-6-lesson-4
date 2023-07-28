@@ -251,6 +251,16 @@ hourlyHigh = 60;
 let tempAdj = document.querySelector("#tempAdj");
 tempAdj.innerHTML = round(hourlyHigh);
 
+//function showMatrixValue() {
+  //let dogSizeAlt = Number(dogSize.value);
+ // if ((dogSize.value = 1 && tempAdj <= 65)) {
+   // matrixValue = 1;
+  //}
+//}
+
+
+//document.querySelector("#matrixValue").innerHTML = matrixValue.value;
+
 function dogScore() {
   dogSizeAlt = Number(dogSize.value);
   checkbox1Alt = Number(checkbox1.checked);
