@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/1d39511d77.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+    <title>Weather app redo</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="background">
+        <div class="row row1" style="height: 3em">
+          <div class="col-7">
+            <div class="form-container-1">
+              <form id="form1">
+                <input
+                  class="search1"
+                  type="search"
+                  autofocus
+                  placeholder="Enter city"
+                  name="city"
+                  id="search-1"
+                />
+
+                <input
+                  type="submit"
+                  value="Search"
+                  name="search"
+                  class="button1"
+                  id="submit-1"
+                />
+              </form>
+            </div>
+          </div>
+          <div class="col">
+            <div
+              class="tool-tip"
+              id="currentLocIcon"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Find my approximate location instead"
+            >
+              🗺️
+            </div>
+          </div>
+          <div class="col day-time">
+            <ul>
+              <li id="lastUpdate">Last updated: EST</li>
+              <li id="date">--</li>
+              <li id="day-time"></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row row2 no-gutters" style="height: 5em">
+          <div class="col-3 mainDetails">
+            <ul>
+              <li class="searched-city" id="current-city">⬆️enter city or</li>
+
+              <li id="state-province">click map icon</li>
+              <li id="country"></li>
+            </ul>
+          </div>
+          <div class="col-3" id="today-forecast">
+            <ul>
+              <li>Humidity: <span id="humidity">--</span> %</li>
+              <li>Wind: <span id="wind">-- mph</span></li>
+            </ul>
+          </div>
+          <div class="col-3" id="mainIconArea">
+            <span id="mainIcon"> <img id="weatherIcons" src="" alt="" /></span>
+            <br />
+            <div id="temp-description"></div>
+          </div>
+          <div class="col mainTempArea">
+            <span id="currentTemp">--</span>
+            <div class="degreeUnits">
+              <a href="#" id="fahrenheit" class="active">°F</a> |
+              <a href="#" id="celsius">°C</a>
+            </div>
+
+            <br />
+            <br />
+            <div class="feelsLike">
+              <em
+                >Feels like
+                <div><span id="feels-like">---</span>°</div>
+              </em>
+            </div>
+          </div>
+        </div>
+        <h6 class="outlook-title"><strong>5 Day Outlook</strong></h6>
+        <div class="outlookForecast" id="forecast"></div>
+      </div>
+      <footer>
+        This webpage application was coded by Dawn Marie
+        <a
+          href="https://github.com/dawnmarie218/weather-web-application"
+          target="_blank"
+          >(open source code)</a
+        >
+      </footer>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
